@@ -1,1 +1,2 @@
-"Simple Protfolio website for Frontend practice" 
+
+Simple Protfolio website for Frontend practice
