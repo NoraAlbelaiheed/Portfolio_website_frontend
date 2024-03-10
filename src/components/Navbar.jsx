@@ -21,6 +21,8 @@ const Navbar = () => {
             <NavLink to='/works' className='active:text-[#FF6464] mx-2'>Works</NavLink>
             <NavLink to='/blogs' className='active:text-[#FF6464] mx-2'>Blogs</NavLink>
             <NavLink to='/' className='active:text-[#FF6464] mx-2'>Contact</NavLink>
+            <NavLink to='/login' className=' mx-2 text-purple-500'>Login</NavLink>
+            <NavLink to='/register' className=' mx-2 text-purple-500'>Register</NavLink>
             </nav>
         </div>
         <div className='block md:hidden ml-auto' onClick={handleNavBar}>
