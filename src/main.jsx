@@ -9,6 +9,8 @@ import WorkDetail from './routes/workDetail';
 import Navbar from './components/Navbar.jsx';
 import Register from './components/Register.jsx';
 import LoginPage from './components/LoginPage.jsx';
+import Profile from './components/Profile.jsx';
+
 
 
 
@@ -21,6 +23,7 @@ const router= createBrowserRouter(
  {path:'/blogs/article' , element:<WorkDetail/>},
  {path:'/register' , element:<Register/>},
  {path:'/login' , element:<LoginPage/>},
+ {path:'/profile' , element:<Profile/>},
 ]
 );
 

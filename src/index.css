@@ -5,6 +5,15 @@
 body{
   background-color: whitesmoke;
 }
+
+.disabled-input{
+  color: black;
+  cursor: not-allowed;
+}
+.avatar{
+  width: 95px;
+  height: 100px;
+}
 /* :root {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
