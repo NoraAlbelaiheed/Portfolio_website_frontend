@@ -7,10 +7,15 @@ import { yupResolver } from 'mantine-form-yup-resolver';
 import { TextInput ,Text, MantineProvider , Button ,PasswordInput} from '@mantine/core';
 import { DateInput } from '@mantine/dates';
 import { useForm } from '@mantine/form';
+import { Modal } from '@mantine/core';
+import { useDisclosure } from '@mantine/hooks';
+import {NavLink} from 'react-router-dom';
 
 
 
 const RegisterForm = () => {
+
+ const [opened, { open, close }] = useDisclosure(false);
 
  const schema =yup.object().shape({
         email:yup.string().email('invalid email format').required('this field is required'),
@@ -44,7 +49,11 @@ const RegisterForm = () => {
         if(isValid){
             Axios.post('https://stg.api.contenido.tam.codes/signup',
            {user:values}
-           ).then(res=>{console.log(res.user)})
+           ).then(
+            res=>{
+                console.log(res.user)
+                open();
+            })
         }
 
     }
@@ -117,6 +126,16 @@ const RegisterForm = () => {
             </form>
         </div>
         </div>
+        <Modal
+            opened={opened}
+            onClose={close}
+            centered
+            >
+              <div className='flex flex-col justify-center items-center'> 
+              <p className='text-black font-semibold py-3 text-xl'>You are now Registerd!</p>
+              <NavLink to='/login' className='flex justify-center bg-purple-500 py-1 px-1 text-white my-4 rounded-sm w-[180px] font-semibold'>Sign in</NavLink>
+              </div>
+            </Modal>
     </div>
     </MantineProvider>
   )

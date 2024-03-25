@@ -1,4 +1,4 @@
-import { MantineProvider, Avatar , Text ,TextInput ,Select ,Button} from '@mantine/core'
+import { MantineProvider, Avatar , Text ,TextInput ,Select ,Button } from '@mantine/core'
 import {DateInput , DatesProvider , DatePickerInput} from '@mantine/dates'
 import Axios from 'axios'
 import React, { useEffect, useState } from 'react'

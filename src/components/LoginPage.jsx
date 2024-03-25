@@ -1,15 +1,19 @@
 import React, {useState} from 'react'
 import Axios from 'axios';
-import { Link } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 import Cookies from 'js-cookie';
 import * as yup from 'yup';
 import { yupResolver } from 'mantine-form-yup-resolver';
 import { TextInput , MantineProvider , Button ,PasswordInput} from '@mantine/core';
 import { useForm } from '@mantine/form';
+import { Modal } from '@mantine/core';
+import { useDisclosure } from '@mantine/hooks';
 
 
 
 const loginForm = () => {
+
+  const [opened, { open, close }] = useDisclosure(false);
 
   const schema = yup.object().shape({
     email: yup.string().email('Invalid email format').required('Email is required'),
@@ -38,6 +42,7 @@ const loginForm = () => {
         res => {
           console.log(res.data.status.token)
           Cookies.set("token",res.data.status.token,{ expires: 1 });
+          open();
         }
     )
     
@@ -77,6 +82,16 @@ const loginForm = () => {
                     <Link to='/register' className='text-purple-600 text-sm mx-2'>Sign up</Link >
                 </div>
             </div>
+            <Modal
+            opened={opened}
+            onClose={close}
+            centered
+            >
+              <div className='flex flex-col justify-center items-center'> 
+              <p className='text-black font-semibold py-3 text-xl'>login was successful</p>
+              <NavLink to='/profile' className='flex justify-center bg-purple-500 py-1 px-1 text-white my-4 rounded-sm w-[180px] font-semibold'>View profile</NavLink>
+              </div>
+            </Modal>
         </div>
     </div>
     </MantineProvider>
